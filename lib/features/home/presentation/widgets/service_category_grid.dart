@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../services/presentation/service_detail_screen.dart';
 
 class ServiceCategoryGrid extends StatelessWidget {
   ServiceCategoryGrid({super.key});
@@ -61,33 +62,38 @@ class ServiceCategoryGrid extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: services.map((service) {
               return Expanded(
-                child: Column(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: service['color'],
-                        borderRadius: BorderRadius.circular(16),
+                child: GestureDetector(
+                  onTap: () {
+                    ServiceDetailScreen.open(context, service['label']);
+                  },
+                  child: Column(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: service['color'],
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Icon(
+                          service['icon'],
+                          color: service['iconColor'],
+                          size: 24,
+                        ),
                       ),
-                      child: Icon(
-                        service['icon'],
-                        color: service['iconColor'],
-                        size: 24,
+                      const SizedBox(height: 8),
+                      Text(
+                        service['label'],
+                        style: const TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.textSecondary,
+                        ),
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      service['label'],
-                      style: const TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.textSecondary,
-                      ),
-                      textAlign: TextAlign.center,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               );
             }).toList(),
