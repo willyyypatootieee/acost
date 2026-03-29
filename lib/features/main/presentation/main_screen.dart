@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../home/presentation/home_screen.dart';
 import '../../chat/presentation/chat_screen.dart';
+import '../../history/presentation/history_screen.dart';
+import '../../profile/presentation/profile_screen.dart';
 import '../../../core/theme/app_colors.dart';
 
 class MainScreen extends StatefulWidget {
@@ -18,8 +20,8 @@ class _MainScreenState extends State<MainScreen> {
     final List<Widget> screens = [
       const HomeScreen(),
       const ChatScreen(),
-      const Scaffold(body: Center(child: Text('Order History Screen'))),
-      const Scaffold(body: Center(child: Text('Profile Screen'))),
+      const HistoryScreen(),
+      const ProfileScreen(),
     ];
 
     return Scaffold(
