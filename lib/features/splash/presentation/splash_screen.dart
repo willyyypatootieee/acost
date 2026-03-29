@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> _bootstrap() async {
     await Future.delayed(const Duration(seconds: 2));
     final prefs = await SharedPreferences.getInstance();
-    final seen = prefs.getBool('seeon_onboarding') ?? false;
+    final seen = prefs.getBool('seen_onboarding') ?? false;
     if (!mounted) return;
     Navigator.pushReplacementNamed(
       context,
@@ -29,20 +29,11 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Icon(Icons.apps_rounded, size: 72),
-            SizedBox(height: 12),
-            Text(
-              'acost app',
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 6),
-            Text('Logo will be added here'),
-          ],
+        child: Text(
+          'acost',
+          style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
         ),
       ),
     );
