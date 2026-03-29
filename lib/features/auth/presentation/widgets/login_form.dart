@@ -164,7 +164,11 @@ class LoginForm extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 12),
-                AppButton(text: 'Skip Login →', onPressed: onLogin),
+                AppButton(
+                  text: 'Skip Login →',
+                  onPressed: () =>
+                      Navigator.of(context).pushReplacementNamed('/home'),
+                ),
               ],
             ),
           ),

@@ -118,7 +118,9 @@ class OtpForm extends StatelessWidget {
           const SizedBox(height: 24),
 
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushReplacementNamed('/home');
+            },
             style: ElevatedButton.styleFrom(
               elevation: 0,
               backgroundColor: AppColors.primaryLight,
