@@ -1,6 +1,8 @@
-import 'package:acost/app/app_route.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import '../../../../app/app_route.dart';
+import '../../../../core/widgets/app_button.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -69,39 +71,57 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               ClipRRect(
-                                borderRadius: BorderRadius.circular(24),
-                                child: Container(
-                                  height: 230,
-                                  width: double.infinity,
-                                  color: Colors.white,
-                                  alignment: Alignment.center,
-                                  child: Icon(
-                                    p.icon,
-                                    size: 70,
-                                    color: const Color(0xFF2AA7E0),
+                                    borderRadius: BorderRadius.circular(24),
+                                    child: Container(
+                                      height: 230,
+                                      width: double.infinity,
+                                      color: Colors.white,
+                                      alignment: Alignment.center,
+                                      child:
+                                          Icon(
+                                            p.icon,
+                                            size: 70,
+                                            color: const Color(0xFF2AA7E0),
+                                          ).animate().scale(
+                                            delay: 200.ms,
+                                            duration: 400.ms,
+                                            curve: Curves.easeOutBack,
+                                          ),
+                                    ),
+                                  )
+                                  .animate()
+                                  .fadeIn(duration: 500.ms)
+                                  .slideY(
+                                    begin: 0.1,
+                                    duration: 500.ms,
+                                    curve: Curves.easeOut,
                                   ),
-                                ),
-                              ),
                               const SizedBox(height: 28),
                               Text(
-                                p.title,
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  fontSize: 40 / 2,
-                                  fontWeight: FontWeight.w800,
-                                  color: Color(0xFF0E1013),
-                                ),
-                              ),
+                                    p.title,
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                      fontSize: 40 / 2,
+                                      fontWeight: FontWeight.w800,
+                                      color: Color(0xFF0E1013),
+                                    ),
+                                  )
+                                  .animate()
+                                  .fadeIn(delay: 300.ms, duration: 400.ms)
+                                  .slideY(begin: 0.2, duration: 400.ms),
                               const SizedBox(height: 12),
                               Text(
-                                p.subtitle,
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  fontSize: 18 / 2,
-                                  color: Color(0xFF6E7076),
-                                  height: 1.6,
-                                ),
-                              ),
+                                    p.subtitle,
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                      fontSize: 18 / 2,
+                                      color: Color(0xFF6E7076),
+                                      height: 1.6,
+                                    ),
+                                  )
+                                  .animate()
+                                  .fadeIn(delay: 400.ms, duration: 400.ms)
+                                  .slideY(begin: 0.2, duration: 400.ms),
                             ],
                           ),
                         ),
@@ -152,31 +172,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 ),
                               ),
                             Expanded(
-                              child: SizedBox(
-                                height: 52,
-                                child: FilledButton(
-                                  style: FilledButton.styleFrom(
-                                    backgroundColor: const Color(0xFF2AA7E0),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(999),
-                                    ),
-                                  ),
-                                  onPressed: () async {
-                                    if (last) {
-                                      await _finish();
-                                    } else {
-                                      await _controller.nextPage(
-                                        duration: const Duration(
-                                          milliseconds: 250,
-                                        ),
-                                        curve: Curves.easeOut,
-                                      );
-                                    }
-                                  },
-                                  child: Text(
-                                    last ? 'Mulai Sekarang' : 'Lanjut',
-                                  ),
-                                ),
+                              child: AppButton(
+                                text: last ? 'Mulai Sekarang' : 'Lanjut',
+                                onPressed: () async {
+                                  if (last) {
+                                    await _finish();
+                                  } else {
+                                    await _controller.nextPage(
+                                      duration: const Duration(
+                                        milliseconds: 250,
+                                      ),
+                                      curve: Curves.easeOut,
+                                    );
+                                  }
+                                },
                               ),
                             ),
                           ],
