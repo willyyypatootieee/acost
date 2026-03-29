@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'app_colors.dart';
 
 class AppTheme {
@@ -10,6 +11,7 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       colorScheme: scheme,
+      textTheme: GoogleFonts.poppinsTextTheme(ThemeData.light().textTheme),
       scaffoldBackgroundColor: AppColors.backgroundLight,
       appBarTheme: const AppBarTheme(centerTitle: true),
       inputDecorationTheme: InputDecorationTheme(
@@ -35,6 +37,7 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       colorScheme: scheme,
+      textTheme: GoogleFonts.poppinsTextTheme(ThemeData.dark().textTheme),
       scaffoldBackgroundColor: AppColors.backgroundDark,
       appBarTheme: const AppBarTheme(centerTitle: true),
       inputDecorationTheme: InputDecorationTheme(
