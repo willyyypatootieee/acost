@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../home/presentation/home_screen.dart';
+import '../../chat/presentation/chat_screen.dart';
 import '../../../core/theme/app_colors.dart';
 
 class MainScreen extends StatefulWidget {
@@ -12,17 +13,17 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
 
-  final List<Widget> _screens = [
-    const HomeScreen(),
-    const Scaffold(body: Center(child: Text('Chat Screen'))),
-    const Scaffold(body: Center(child: Text('Order History Screen'))),
-    const Scaffold(body: Center(child: Text('Profile Screen'))),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final List<Widget> screens = [
+      const HomeScreen(),
+      const ChatScreen(),
+      const Scaffold(body: Center(child: Text('Order History Screen'))),
+      const Scaffold(body: Center(child: Text('Profile Screen'))),
+    ];
+
     return Scaffold(
-      body: IndexedStack(index: _currentIndex, children: _screens),
+      body: IndexedStack(index: _currentIndex, children: screens),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           boxShadow: [
