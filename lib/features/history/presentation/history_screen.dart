@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/theme/app_colors.dart';
+import 'pages/order_detail_screen.dart';
 import 'widgets/order_history_card.dart';
 
 class HistoryScreen extends StatelessWidget {
@@ -84,7 +85,12 @@ class HistoryScreen extends StatelessWidget {
             serviceIcon: order['icon'],
             iconColor: order['iconColor'],
             onDetailPressed: () {
-              // TODO: Navigate to Order Detail
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const OrderDetailScreen(),
+                ),
+              );
             },
           );
         },
