@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import '../../../../app/app_route.dart';
 import '../../../../core/widgets/app_button.dart';
+import 'widgets/onboarding_content.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -17,17 +17,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   final _pages = const [
     _OnboardData(
-      Icons.handyman_outlined,
+      'assets/images/onboarding/onboarding1.png',
       'Layanan AC Profesional',
       'Teknisi berpengalaman siap melayani perawatan dan perbaikan AC Anda dengan standar kualitas terbaik',
     ),
     _OnboardData(
-      Icons.assignment_turned_in_outlined,
+      'assets/images/onboarding/onboarding2.png',
       'Booking Mudah & Cepat',
       'Jadwalkan layanan AC kapan saja dengan mudah melalui aplikasi. Pilih waktu yang sesuai dengan kebutuhan Anda',
     ),
     _OnboardData(
-      Icons.star_border_rounded,
+      'assets/images/onboarding/onboarding3.png',
       'Kepuasan Terjamin',
       'Garansi layanan dan kepuasan pelanggan adalah prioritas kami. Dapatkan pengalaman terbaik dengan rating tinggi',
     ),
@@ -67,62 +67,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     child: Column(
                       children: [
                         Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              ClipRRect(
-                                    borderRadius: BorderRadius.circular(24),
-                                    child: Container(
-                                      height: 230,
-                                      width: double.infinity,
-                                      color: Colors.white,
-                                      alignment: Alignment.center,
-                                      child:
-                                          Icon(
-                                            p.icon,
-                                            size: 70,
-                                            color: const Color(0xFF2AA7E0),
-                                          ).animate().scale(
-                                            delay: 200.ms,
-                                            duration: 400.ms,
-                                            curve: Curves.easeOutBack,
-                                          ),
-                                    ),
-                                  )
-                                  .animate()
-                                  .fadeIn(duration: 500.ms)
-                                  .slideY(
-                                    begin: 0.1,
-                                    duration: 500.ms,
-                                    curve: Curves.easeOut,
-                                  ),
-                              const SizedBox(height: 28),
-                              Text(
-                                    p.title,
-                                    textAlign: TextAlign.center,
-                                    style: const TextStyle(
-                                      fontSize: 40 / 2,
-                                      fontWeight: FontWeight.w800,
-                                      color: Color(0xFF0E1013),
-                                    ),
-                                  )
-                                  .animate()
-                                  .fadeIn(delay: 300.ms, duration: 400.ms)
-                                  .slideY(begin: 0.2, duration: 400.ms),
-                              const SizedBox(height: 12),
-                              Text(
-                                    p.subtitle,
-                                    textAlign: TextAlign.center,
-                                    style: const TextStyle(
-                                      fontSize: 18 / 2,
-                                      color: Color(0xFF6E7076),
-                                      height: 1.6,
-                                    ),
-                                  )
-                                  .animate()
-                                  .fadeIn(delay: 400.ms, duration: 400.ms)
-                                  .slideY(begin: 0.2, duration: 400.ms),
-                            ],
+                          child: OnboardingContent(
+                            image: p.image,
+                            title: p.title,
+                            subtitle: p.subtitle,
                           ),
                         ),
                         Row(
@@ -213,9 +161,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 }
 
 class _OnboardData {
-  final IconData icon;
+  final String image;
   final String title;
   final String subtitle;
 
-  const _OnboardData(this.icon, this.title, this.subtitle);
+  const _OnboardData(this.image, this.title, this.subtitle);
 }
