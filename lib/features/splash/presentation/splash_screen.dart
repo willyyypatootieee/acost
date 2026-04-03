@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: AppColors.primary,
       body: Center(
-        child: Image.asset('assets/images/acostlogo(white).png', height: 120)
+        child: Image.asset('assets/images/acostlogo(color).png', height: 120)
             .animate()
             .fadeIn(duration: 800.ms)
             .scale(
